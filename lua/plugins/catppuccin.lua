@@ -7,7 +7,7 @@ return {
       "LazyVim/LazyVim",
     },
     opts = {
-      flavour = "mocha",
+      flavour = "frappe",
     },
   },
 }

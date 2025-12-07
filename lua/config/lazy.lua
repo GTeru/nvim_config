@@ -13,6 +13,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   end
 end
 vim.opt.rtp:prepend(lazypath)
+vim.o.guicursor = "n-v-c-sm-i-ci-ve:ver20,a:blinkwait500-blinkoff300-blinkon300"
 vim.opt.wrap = true
 vim.opt.linebreak = true
 require("lazy").setup({
