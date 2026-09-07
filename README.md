@@ -121,3 +121,24 @@ nvim
 
 - **`tree-sitter` CLI** — only needed for building parsers from source or writing custom grammars. `brew install tree-sitter` / `pacman -S tree-sitter`.
 - **Extra language servers** — installed on demand via `:Mason`.
+
+## Smoke test
+
+`scripts/smoke-test.sh` boots Neovim headlessly and fails if the config emits any startup error. Runs in under a second once plugins are installed.
+
+Run it manually any time:
+
+```sh
+scripts/smoke-test.sh          # fast: startup check only
+scripts/smoke-test.sh --sync   # also runs :Lazy! sync (needs network)
+```
+
+### Wire it as a pre-commit hook
+
+The hook lives in `.githooks/pre-commit` (tracked in the repo). Point git at that directory once per clone:
+
+```sh
+git config core.hooksPath .githooks
+```
+
+After that, every `git commit` runs the smoke test first and aborts on failure. Bypass in an emergency with `git commit --no-verify` (avoid unless you know why).

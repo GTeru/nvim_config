@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Runs the headless nvim smoke test before every commit.
+# Enable once per clone with:  git config core.hooksPath .githooks
+set -euo pipefail
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+exec "$REPO_ROOT/scripts/smoke-test.sh"
